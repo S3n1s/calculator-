@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Percentual</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        input {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e1e1e;
+            color: white;
+        }
+        button {
+            background-color: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Percentual</h1>
+    <input type="number" id="totalMensagens" placeholder="Total de Mensagens">
+    <input type="number" id="mensagensRespondidas" placeholder="Mensagens Respondidas">
+    <button id="calcularBtn">Calcular Percentual</button>
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('calcularBtn').addEventListener('click', function() {
+            const totalMensagens = parseInt(document.getElementById('totalMensagens').value);
+            const mensagensRespondidas = parseInt(document.getElementById('mensagensRespondidas').value);
+            let resultado;
+
+            if (isNaN(totalMensagens) || isNaN(mensagensRespondidas)) {
+                resultado = "Por favor, insira números válidos.";
+            } else if (totalMensagens === 0) {
+                resultado = "Divisão por zero";
+            } else {
+                const percentual = (mensagensRespondidas / totalMensagens) * 100;
+                resultado = `Percentual de Respostas: ${percentual.toFixed(2)}%`;
+            }
+
+            document.getElementById('resultado').textContent = resultado;
+        });
+    </script>
+</body>
+</html>
